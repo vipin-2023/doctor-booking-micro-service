@@ -13,10 +13,6 @@ app.use('/api',createProxyMiddleware("/api",{ target: 'http://localhost:3001/', 
 // app.use('/api/v1/doctor',proxy("www.google.com"));
 
 
-
-
-
-
 app.listen(PORT, async () => {
   try {
     console.log(`Server is running on port ${PORT}`);
