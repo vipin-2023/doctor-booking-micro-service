@@ -43,10 +43,12 @@ var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
 var express_http_proxy_1 = __importDefault(require("express-http-proxy"));
 var app = (0, express_1.default)();
-var PORT = 3000;
+var PORT = 3005;
 app.use(cors_1.default);
 app.use(express_1.default.json());
-app.use('/', (0, express_http_proxy_1.default)("www.google.com"));
+app.use('/api/v1/user', (0, express_http_proxy_1.default)("http://localhost:3001/"));
+app.use('/api/v1/admin', (0, express_http_proxy_1.default)("www.google.com"));
+app.use('/api/v1/doctor', (0, express_http_proxy_1.default)("www.google.com"));
 app.listen(PORT, function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         try {
