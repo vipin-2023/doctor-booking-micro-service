@@ -1,22 +1,21 @@
-import express from 'express';
-import cors from "cors";
-const { createProxyMiddleware } = require('http-proxy-middleware');
+import express, { Request, Response } from 'express';
+import proxy from 'express-http-proxy';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
-const PORT = 3005;
 
-app.use(cors);
-app.use(express.json());
-app.use('/api',createProxyMiddleware("/api",{ target: 'http://localhost:3001/', changeOrigin: true,pathRewrite: {
-  '^/api': '/',} }));
-// app.use('/api/v1/admin',proxy("www.google.com"));
-// app.use('/api/v1/doctor',proxy("www.google.com"));
+app.use('/users-service', proxy(process.env.USER_SERVICE_SERVER || 'http://localhost:3001'));
+app.use('/doctor-service', proxy(process.env.DOCTOR_SERVICE_SERVER || 'http://localhost:3001'));
+app.use('/appointment-service', proxy(process.env.APPOINTMENT_SERVICE_SERVER || 'http://localhost:3001'));
+app.use('/notification-service', proxy(process.env.NOTIFICATION_SERVICE_SERVER || 'http://localhost:3001'));
+app.use('/admin-service', proxy(process.env.ADMIN_SERVICE_SERVER || 'http://localhost:3001'));
 
+app.get('/', (req: Request, res: Response) => {
+  res.send('3000');
+});
 
-app.listen(PORT, async () => {
-  try {
-    console.log(`Server is running on port ${PORT}`);
-  }catch (error) {
-    console.error('Failed to connect to MongoDB', error);
-  }
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Gateway server is running on port ${process.env.PORT || 3000}`);
 });
