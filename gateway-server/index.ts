@@ -13,7 +13,7 @@ app.use('/notification-service', proxy(process.env.NOTIFICATION_SERVICE_SERVER |
 app.use('/admin-service', proxy(process.env.ADMIN_SERVICE_SERVER || 'http://localhost:3001'));
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('3000');
+  res.send( `${process.env.PORT || 3000}`);
 });
 
 app.listen(process.env.PORT || 3000, () => {
