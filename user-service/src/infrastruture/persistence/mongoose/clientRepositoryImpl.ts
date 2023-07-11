@@ -7,14 +7,14 @@ export class ClientRepositoryImpl implements ClientRepository{
     getAll=async(): Promise<Client[]>=> {
         return await ClientModel.find();
     }
-    create= async(name: string, email: string, password: string): Promise<Client>=> {
-        return await ClientModel.create({name,email,password})
+    create= async(data: Partial<Client>): Promise<Client>=> {
+        return await ClientModel.create(data)
     }
     getById= async(id: string): Promise<Client | null>=> {
         return await ClientModel.findById(id);
     }
-    update= async(id: string, name: string, email: string, password: string): Promise<Client | null>=> {
-        return await ClientModel.findByIdAndUpdate(id,{name,email,password},{new:true});
+    update= async(id: string, updates: Partial<Client>): Promise<Client | null>=>{
+        return await ClientModel.findByIdAndUpdate(id,updates,{new:true});
     }
     delete = async(id: string): Promise<boolean>=> {
         const isdeletedClient = await ClientModel.findByIdAndDelete(id);
