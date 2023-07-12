@@ -1,9 +1,9 @@
  export interface Client {
+    id:string,
     name: string;
     email: string;
     password: string;
-    isAdmin: boolean;
-    isDoctor: boolean;
+    role: 'user' | 'doctor' | 'admin';
     notification: any[];
     seennotification: any[];
   }

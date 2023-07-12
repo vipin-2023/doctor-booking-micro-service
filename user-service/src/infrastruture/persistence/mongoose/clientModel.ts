@@ -1,9 +1,15 @@
 import mongoose, { Document, Schema } from 'mongoose';
 import {Client} from "../../../domain/client/models/Client"
 
-export interface ClientDocument extends Client, Document {}
+export interface ClientDocument extends Client , Document {
+  id:string,
+}
   
 const clientSchema = new Schema<ClientDocument>({
+    id:{
+      type:String,
+      required:[true, "id is require"],
+    },
     name: {
       type: String,
       required: [true, "name is require"],
@@ -16,14 +22,10 @@ const clientSchema = new Schema<ClientDocument>({
       type: String,
       required: [true, "password is require"],
     },
-    isAdmin: {
-      type: Boolean,
-      default: false,
-    },
-    isDoctor: {
-      type: Boolean,
-      default: false,
-    },
+    role: { 
+    type: String,
+    enum: ['user', 'doctor', 'admin'],
+    required: true },
     notification: {
       type: [String],
       default: [],
