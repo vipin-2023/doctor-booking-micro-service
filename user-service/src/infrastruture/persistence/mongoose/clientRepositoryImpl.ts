@@ -7,6 +7,9 @@ export class ClientRepositoryImpl implements ClientRepository{
     getAll=async(): Promise<Client[]>=> {
         return await ClientModel.find();
     }
+    findOne= async(field: Partial<Client>): Promise<Client |null>=> {
+        return await ClientModel.findOne(field);
+    }
     create= async(data: Partial<Client>): Promise<Client>=> {
         return await ClientModel.create(data)
     }

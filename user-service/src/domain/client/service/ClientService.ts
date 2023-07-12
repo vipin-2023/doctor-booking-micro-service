@@ -13,6 +13,10 @@ export class ClientService {
     const clients = await this.repository.getAll();
     return clients;
   };
+  findOne = async (field:Partial<Client>): Promise<Client | null> => {
+    const clients = await this.repository.findOne(field);
+    return clients;
+  };
 
   createClient = async (data: Partial<Client>): Promise<Client> => {
     const client = await this.repository.create(data);
