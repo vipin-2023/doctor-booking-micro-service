@@ -1,5 +1,5 @@
-import { Client } from "../../../domain/client/models/Client";
-import { ClientRepository } from "../../../domain/client/repositories/ClientRepository";
+import { Client } from "../../../../domain/client/models/Client";
+import { ClientRepository } from "../../../../domain/client/repositories/ClientRepository";
 import { ClientModel } from "./clientModel";
 
 export class ClientRepositoryImpl implements ClientRepository{
@@ -21,7 +21,6 @@ export class ClientRepositoryImpl implements ClientRepository{
     }
     delete = async(id: string): Promise<boolean>=> {
         const isdeletedClient = await ClientModel.findByIdAndDelete(id);
-        return !!isdeletedClient;
-        
+        return !!isdeletedClient;    
     }
 }

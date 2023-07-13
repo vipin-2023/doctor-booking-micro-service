@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import {Client} from "../../../domain/client/models/Client"
+import {Client} from "../../../../domain/client/models/Client"
 
 export interface ClientDocument extends Client , Document {
   id:string,

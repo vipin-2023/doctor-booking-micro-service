@@ -1,5 +1,5 @@
 import { Client } from '../models/Client';
-import { ClientRepositoryImpl } from '../../../infrastruture/persistence/mongoose/clientRepositoryImpl';
+import { ClientRepositoryImpl } from '../../../infrastruture/persistence/mongoose/clientRepo/clientRepositoryImpl';
 import { ClientRepository } from '../repositories/ClientRepository';
 
 export class ClientService {
