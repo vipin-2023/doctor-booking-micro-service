@@ -14,5 +14,13 @@ export class Validator {
       }
     }
     return true;
+  } 
+  public validateRequestParams(req: Request): boolean {
+    for (const field of this.requiredFields) {
+      if (!req.params[field]) {
+        return false;
+      }
+    }
+    return true;
   }
 }
