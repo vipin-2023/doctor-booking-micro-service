@@ -148,6 +148,38 @@ export class UserController {
       res.status(500).json(ResponseUtils.error('An error occurred while updating user'));
     }
   };
+  dictorStatusControl =async (req: Request, res: Response): Promise<void> => {
+    try { 
+      const validator = new Validator(["doctorId", "status"]);
+      const isValid = validator.validateRequestParams(req);
+  
+      if (!isValid) {
+        res.status(400).json(ResponseUtils.error('Missing required fileds'));
+        return;
+      } 
+      const doctor = await this.doctorService.updateDoctor(req.body.doctorId,req.body.status);
+      if (!doctor) {
+        res.status(404).json(ResponseUtils.error("Doctor not found"));
+        return;
+      } 
+      const user = await this.clientService.getByClientId(req.body.id);
+      if (!user) {
+        res.status(404).json(ResponseUtils.error("User not found"));
+        return;
+      }
+      user.notification.push({
+        type: "doctor-account-status-updated",
+        message: `Your Doctor Account Request Has ${req.body.status} `,
+        onClickPath: "/notification",
+      });
+
+      user.role = req.body.status === "approved" ? "doctor" : "user";
+      await this.clientService.updateClient(req.body.id,user);
+
+    }catch (error) {
+      res.status(500).json(ResponseUtils.error('An error occurred while updating status'));
+    }
+  }
   
 
 }
