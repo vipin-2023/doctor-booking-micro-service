@@ -15,7 +15,7 @@ export class AppointmentController {
    
   }
 
-  registerUser = async (req: Request, res: Response): Promise<void> => {
+  bookAppointmnet = async (req: Request, res: Response): Promise<void> => {
     try {
      
     } catch (error) {
