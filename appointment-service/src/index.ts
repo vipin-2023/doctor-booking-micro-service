@@ -1,6 +1,6 @@
 import express from 'express';
 import "../config/mongodb"
-import routes from "../src/application/routes/userRoutes"
+import routes from "./application/routes/appointmentRoutes"
 
 const app = express();
 const port = 3002;

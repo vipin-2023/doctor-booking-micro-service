@@ -1,5 +1,5 @@
 import { Appointment } from "../../../domain/appointment/models/Appointment";
-import { AppointmentRepository } from "../../../domain/appointment/repositories/ClientRepository";
+import { AppointmentRepository } from "../../../domain/appointment/repositories/AppointmentRepository";
 import { AppointmentModel } from "./appointmentModel";
 
 export class AppointmentRepositoryImpl implements AppointmentRepository{
