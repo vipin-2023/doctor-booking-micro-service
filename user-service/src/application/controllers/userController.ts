@@ -6,7 +6,8 @@ import {HashUtility} from "../utils/bycriptUtils";
 import {ResponseUtils} from "../utils/jsonUtils";
 import {TokenUtility} from "../utils/jwtUtils";
 import {UUIDUtility}from "../utils/uuidUtils";
-
+import KafkaProducer from "../../infrastruture/messaging/kafka/kafkaProducer";
+import KafkaTopics from "../../infrastruture/messaging/kafka/kafkaTopics";
 
 export class UserController {
   private clientService: ClientService;
@@ -38,7 +39,15 @@ export class UserController {
       req.body._id = UUIDUtility.generateUUID();
   
       const newUser = await this.clientService.createClient(req.body);
-  
+      if(newUser){
+        try {
+          const producer = new KafkaProducer(newUser, KafkaTopics.UserCreated);
+          producer.run().catch(console.error);
+        } catch (e) {
+          res.status(500).json(ResponseUtils.error('An error occurred while producing kafka topic'));
+        }
+      }
+      
       res.status(201).json(ResponseUtils.success('Register Successfully', newUser));
     } catch (error) {
       res.status(500).json(ResponseUtils.error('An error occurred while fetching todos'));

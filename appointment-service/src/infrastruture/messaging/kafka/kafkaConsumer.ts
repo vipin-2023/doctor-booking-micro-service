@@ -1,4 +1,4 @@
-import kafka from '../../../config/kafka';
+import kafka from '../../../../config/kafka';
 import { Consumer, EachMessagePayload } from 'kafkajs';
 import { EventEmitter } from 'events';
 

@@ -1,10 +1,10 @@
-import kafka from '../../../config/kafka';
+import kafka from '../../../../config/kafka';
 import { Producer, ProducerRecord } from 'kafkajs';
 
 class KafkaProducer {
   private producer: Producer;
 
-  constructor(private message: string, private topicName: string) {
+  constructor(private message, private topicName: string) {
     this.producer = kafka.producer();
   }
 
