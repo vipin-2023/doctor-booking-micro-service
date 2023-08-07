@@ -1,8 +1,7 @@
 enum KafkaTopics {
-    UserCreated = 'user-created',
-    UserUpdated = 'user-updated',
-    OrderPlaced = 'order-placed',
-   
-  }
-  
-  export default KafkaTopics;
+  UserNotification = "user-notification",
+  UserNotificationResponse = "user-notification-response"
+ 
+}
+
+export default KafkaTopics;

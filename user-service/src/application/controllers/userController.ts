@@ -39,14 +39,7 @@ export class UserController {
       req.body._id = UUIDUtility.generateUUID();
   
       const newUser = await this.clientService.createClient(req.body);
-      if(newUser){
-        try {
-          const producer = new KafkaProducer(newUser, KafkaTopics.UserCreated);
-          producer.run().catch(console.error);
-        } catch (e) {
-          res.status(500).json(ResponseUtils.error('An error occurred while producing kafka topic'));
-        }
-      }
+      
       
       res.status(201).json(ResponseUtils.success('Register Successfully', newUser));
     } catch (error) {

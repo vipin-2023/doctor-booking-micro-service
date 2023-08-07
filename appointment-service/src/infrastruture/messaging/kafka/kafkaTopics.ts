@@ -1,7 +1,6 @@
 enum KafkaTopics {
-    UserAsked = 'user-asked',
-    UserUpdated = 'user-updated',
-    OrderPlaced = 'order-placed',
+    UserNotification = "user-notification",
+    UserNotificationResponse = "user-notification-response"
    
   }
   

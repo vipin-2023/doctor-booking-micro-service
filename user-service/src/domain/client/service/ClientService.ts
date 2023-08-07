@@ -28,7 +28,7 @@ export class ClientService {
     return client;
   };
 
-  updateClient = async (id: string, updates: Partial<Client>): Promise<Client | null> => {
+  updateClient = async (id: string, updates: any): Promise<Client | null> => {
     const client = await this.repository.update(id, updates);
     return client;
   };
