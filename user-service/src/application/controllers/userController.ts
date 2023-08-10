@@ -11,7 +11,8 @@ import KafkaTopics from "../../infrastruture/messaging/kafka/kafkaTopics";
 
 export class UserController {
   private clientService: ClientService;
-  private doctorService:DoctorService;
+  private doctorService: DoctorService;
+  
   constructor() {
     this.clientService = new ClientService();
     this.doctorService= new DoctorService();

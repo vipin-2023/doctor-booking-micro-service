@@ -1,0 +1,32 @@
+User Service:
+
+//  loginController: Handles user login functionality.
+//  registerController: Manages user registration and account creation.
+//  authController: Handles authentication and authorization-related operations.
+//  updateProfileController: Manages user profile updates.
+//  changeAccountStatusController: Updates the status of a user account (e.g., active/inactive).
+//  getAllUsersController: Retrieves all users.
+userAppointmentsController: Retrieves appointments for a specific user.
+
+
+Doctor Service:
+
+applyDoctorController: Handles doctor application and registration.
+getDoctorInfoController: Retrieves detailed information about a specific doctor.
+getDoctorByIdController: Retrieves a doctor by their ID.
+doctorAppointmentsController: Retrieves appointments for a specific doctor.
+updateStatusController: Updates the status of a doctor (e.g., active/inactive).
+getAllDoctorsController: Retrieves all doctors.
+
+Appointment Service:
+
+bookeAppointmnetController: Handles appointment booking for users.
+bookingAvailabilityController: Retrieves available time slots for booking appointments.
+cancelAppointmentController: Cancels an appointment.
+getAllAppointmentController: Retrieves all appointments.
+updateStatusController: Updates the status of an appointment.
+getAllNotificationController: Retrieves all notifications.
+deleteAllNotificationController: Deletes all notifications.
+getDoctorByIdController: Retrieves a doctor by their ID.
+getAllUsersController: Retrieves all users.
+changeAccountStatusController: Updates the status of a user or doctor account (e.g., active/inactive).
